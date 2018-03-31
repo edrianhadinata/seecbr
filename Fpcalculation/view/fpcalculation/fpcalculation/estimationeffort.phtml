@@ -1,0 +1,125 @@
+<?php
+	
+	if($id_answer!=null){
+		$cbrPart="Revise - ";
+	}else{
+		$cbrPart="";
+	}
+
+	$title=$cbrPart."Project Effort Estimation";
+	$this->headTitle($title);
+
+	$form->setAttribute('action',$this->url('fpcalculation',array('action'=>'saveeffort')));
+	$form->prepare();
+	echo $this->form()->openTag($form);
+	echo $this->formHidden($form->get('id'));
+	$id_Dataset=(int)$ID['ID'] + 1;
+	//print_r(array($ID['ID'],$id_Dataset));
+	
+	if($answer!=null){
+	//print_r($id_answer);
+	echo "<input type='hidden' name='ID_Dataset' value='".$id_Dataset."'>";
+	echo "<input type='hidden' name='id_answer' value='".$id_answer."'>";
+?>
+<div class="page-header">
+<h1>
+	<?php echo $cbrPart."Answer List"; ?>
+</h1>
+</div>
+<div class="well">
+<p>
+	The Answer list gathered throught <a href="<?php echo $this->url('questioner',array('action'=>'add')); ?>">questioner form</a>.
+</p>
+</div>
+<table class="table table-bordered table-hover table-striped">
+	<?php for($i=0;$i<count($answer);$i++): ?>
+	<tr>
+		<td><?php echo $specify[$i]; ?></td>
+		<?php
+			$specify[$i]=str_replace(" ","_",$specify[$i]);
+		?>
+		<td><input type="hidden" value="<?php echo $answer[$i]; ?>" name="<?php echo $specify[$i]; ?>">
+		<?php echo $answer[$i]; ?>
+		</td>
+	</tr>
+	<?php endfor; ?>
+</table>
+<br>
+<?php } ?>
+<div class="page-header">
+<h1> 
+	<?php echo $cbrPart."Function Point Analysis"; ?>
+</h1>
+</div>
+<div class="well">
+<p>
+	Function point measured from functional perspective by software built.
+</p>
+</div>
+<table class="table table-bordered table-hover table-striped">
+	<tr>
+		<th>Description</th>
+		<th>Values</th>
+	</tr>
+	<?php 
+		$i=0;
+		foreach($form->dataEstimationCategories as $values){
+	?>
+	<tr>
+		<td><?php echo $values; ?></td>
+		<?php
+			$values=str_replace(" ","_",$values);
+		?>
+		<td><input type='hidden' name="<?php echo $values; ?>" value="<?php echo $estimateResult[$i]; ?>"><?php echo $estimateResult[$i]; ?></td>
+	</tr>
+	<?php
+		$i++;
+		}
+	?>
+</table>
+
+<div class="page-header">
+<p><h1>
+	<?php echo $cbrPart."Effort Estimation"; ?>
+</h1></p>
+</div>
+<div class="well">
+<p>
+	Effort is directly calculated from the size of the software.
+</p>
+</div>
+<table class="table table-bordered table-hover table-striped">
+	<tr>
+		<th>Effort Description</th>
+		<th>Values</th>
+	</tr>
+	<?php 
+		$i=0;
+		foreach($form->dataEffortCategories as $values){
+	?>
+	<tr>
+		<td><?php echo $values; ?></td>
+		<?php
+			$values=str_replace(" ","_",$values);
+		?>
+		<td>
+		<input type='hidden' name="<?php echo $values; ?>" value="<?php echo $effort[$i]; ?>">
+		<?php echo $effort[$i].' '.$form->dataEffortCategoriesMeasure[$i]; ?> </td>
+	</tr>
+	<?php
+		$i++;
+		}
+	?>
+</table>
+<?php if($id_answer!=null){ ?>
+<div class="well">
+<p>
+	Click <a class='btn btn-success btn-xs' href='#'>Save into dataset</a> button to retain new case and save new solution into dataset. when solution in the past case has not given best percentage by similarities or analogies, you can reuse the solution.
+</p>
+</div>
+<?php
+	echo $this->formSubmit($form->get('submit'));
+	}
+	
+	echo $this->form()->closeTag();
+?>

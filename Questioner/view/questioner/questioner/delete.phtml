@@ -1,0 +1,55 @@
+<?php
+	
+	$title='Delete Confirm';
+	$this->headTitle($title);
+	$aad=array();
+?>
+
+<h1>
+	<?php echo $this->escapeHTML($title); ?> 
+</h1>
+<hr>
+<p>
+	<a class="btn btn-success btn-md" href='<?php echo $this->url('questioner'); ?>'><i class="fa fa-fw fa-angle-double-left"></i>Back to My Answer List</a>
+</p>
+
+</p>
+	Are you sure that you want to delete?
+</p>
+
+<?php 
+	foreach($question_detail as $quest):
+		$aad[]=$quest->quest_data["question"];
+	endforeach; 
+?>
+
+<table class="table">
+	<tr>
+		<th>ID</th>
+		<th>Question</th>
+		<th>Answer</th>
+	</tr>
+	<?php foreach($answer_detail as $key=>$answer):?>
+		<tr>
+			<td><?php echo $key+1; ?></td>
+			<td><?php echo $aad[$key]."?"; ?></td>
+			<td><?php 
+			if($key==7){$answer.=" Month";}
+			echo $answer; ?></td>
+		</tr>
+	<?php endforeach; ?>
+</table>
+
+<?php
+	$url=$this->url('questioner',array('action'=>'delete','id'=>$id));
+?>
+<form action="<?php echo $url; ?>" method="post">
+	<div>
+		<input type="hidden" name="id" value="<?php echo (int) $id; ?>">
+		<input class="btn btn-danger btn-md" type="submit" name="del" value="Yes">
+		<input class="btn btn-info btn-md" type="submit" name="del" value="No">
+	</div>
+</form>
+
+
+

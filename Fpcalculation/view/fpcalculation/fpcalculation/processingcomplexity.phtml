@@ -1,0 +1,65 @@
+<?php
+
+	if($id_answer!=null){
+		$cbrPart="Revise - ";
+	}else{
+		$cbrPart="";
+	}
+
+	$title=$cbrPart."System Complexity";
+	$this->headTitle($title);
+?>
+<div class="page-header">
+    <h1><?php echo $this->escapeHTML($title); ?> </h1>
+</div>
+<div class="well">
+<p>
+	Processing complexity used to be counting weight of complexity from software build based on <?php echo count($form->dataCategorySystemComplexity); ?> categories.
+</p>
+</div>
+<p>
+<?php
+	if($unadjustedFp!=null){
+		?>
+		<div class="alert alert-success">
+           <strong>Well done!</strong> You successfully count Total Unadjusted Function Points(TUFP) = <?php echo $unadjustedFp; ?>
+        </div>
+		<?php
+	}
+?>
+</p>
+<p>
+	<?php
+	$form->setAttribute('action',$this->url('fpcalculation',array('action'=>'processingcomplexity')));
+	$form->prepare();
+	echo $this->form()->openTag($form);
+	echo $this->formHidden($form->get('id'));
+	echo "<input type='hidden' name='unadjustedFp' value='".$unadjustedFp."'>";
+	echo "<input type='hidden' name='id_answer' value='".$id_answer."'>";
+	?>
+	<table class="table">
+		<tr>
+			<th>Overall System Complexity</th>
+			<th></th>
+			<th>Scale 1 to 3</th>
+		</tr>
+		<?php
+			$i=0;
+			foreach($form->dataCategorySystemComplexity as $valCategory){
+		?>
+				<tr>
+					<td><?php echo $valCategory; ?></td>
+					<td> : </td>
+					<td><?php echo $this->formRow($form->get('sc_'.$i)); ?></td>
+				</tr>
+		<?php
+				$i++;
+			}
+		?>
+	
+	</table>
+	<?php
+	echo $this->formSubmit($form->get('submit'))." ".$this->formReset($form->get('reset'))."</br>";
+	echo $this->form()->closeTag();
+	?>
+</p>

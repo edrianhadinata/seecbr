@@ -1,0 +1,35 @@
+<?php
+	$title='The Question Form';
+	$this->headTitle($title);
+?>
+
+<div class="page-header">
+    <h1><?php echo $this->escapeHTML($title); ?> </h1>
+</div>
+<div class="well">
+ <p>
+This form would be gathering the information from outside. The information will influence which analogies or similar cases are extracted from dataset.
+</p>
+</div>
+
+<p>
+	<a class="btn btn-success btn-md" href='<?php echo $this->url('questioner'); ?>'><i class="fa fa-fw fa-angle-double-left"></i>Back to My Answer List</a>
+</p>
+
+
+
+<?php
+	$form->setAttribute('action',$this->url('questioner',array('action'=>'add')));
+	$form->prepare();
+	
+	echo $this->form()->openTag($form);
+	echo $this->formHidden($form->get('id'));
+	
+	for($i=0;$i<9;$i++){
+		echo $this->formRow($form->get('question_'.$i.''));
+		echo"<br>";
+	}
+	
+	echo "<br>".$this->formSubmit($form->get('submit'))."</br>";
+	echo $this->form()->closeTag();
+?>

@@ -1,0 +1,153 @@
+<?php
+	
+	$title="Help - How to use this";
+	$this->headTitle($title);
+	
+?>
+
+<div class="page-header">
+<h1>
+	<?php echo $this->escapeHTML($title); ?>
+</h1>
+</div>
+
+<div id="page-wrapper">
+
+	<p>
+		Generating (and regenerating) project effort estimates is an important and continuous process for project managers. Not only do good estimates allow the better use of resources, but by reviewing and improving their estimation process, a software company can learn and improve from their past experience.
+	</p>
+	<p>
+		Therefore  <span class="zf-green"><b><i>SEE CBR</i></b></span> (<i>Software Effort Estimation Case Based Reasoning</i>) offer the contribution towards improvement of software engineering level.
+	</p>
+</div>
+<div id="page-wrapper">
+	<div class="page-header">
+	<h3>How To Login</h3>
+	</div>
+	<p>
+		To login this site you must be a member. Thus, you can login through user and password which is specially given. Do you want to be a member? join us. it's free
+	</p>
+	<p>
+		<img src='<?php echo $this->basePath('img/login.png') ?>'>
+	</p>
+	<p>
+	After successfully logged, application should show the welcome page screen
+	</p>
+	 <div class="row">
+		<img class='col-lg-8' src='<?php echo $this->basePath('img/successfully-logged.png') ?>'>
+	</div>
+	<p>
+	In admin page screen there are four menus and two buttons. Within those menus are <i class="fa fa-fw fa-home"></i>home, <i class="fa fa-fw fa-clipboard"></i>questioner, <i class="fa fa-fw fa-calculator"></i>Calculate Effort and <i class="fa fa-fw fa-user"></i>Welcome user menu. The buttons are <a class='btn btn-success btn-xs'>Start This Software &raquo;</a> and <a class='btn btn-info btn-xs'>How to Use This &raquo;</a>
+	</p>
+	
+	<div class="page-header">
+	<h3>How To Start</h3>
+	</div>
+	
+	<p>
+	Output Information of Effort Estimation in SEE CBR gathering through information gain by input form given. Click <a class='btn btn-success btn-xs'>Start This Software &raquo;</a> button will be go to The question form or Click <a class='btn btn-default btn-xs'><i class="fa fa-fw fa-clipboard"></i>Questioner<i class="fa fa-fw fa-angle-right"></i>Questioner Form</a> menu. 
+	</p>
+	
+	 <div class="row">
+		<img class='col-lg-2' src='<?php echo $this->basePath('img/Questioner-QuestionForm.png') ?>'>
+	</div>
+	<p>
+		Insert information through form below.
+	</P>
+	<div class="page-header">
+	<h3>Fill The Question Form</h3>
+	</div>
+	<p>
+		This form would be gathering the information from outside. The information will influence which analogies or similar cases are extracted from dataset. 
+	</p>
+	<div class="row">
+		<img class='col-lg-7' src='<?php echo $this->basePath('img/TheQuestionForm.png') ?>'>
+	</div>
+	<br>
+	<p>
+		Click <a class='btn btn-success btn-xs'>Save</a> button to insert form into database. Then it will redirected automaticly to My Answer List Page by system
+	</p>
+	<div class="page-header">
+	<h3>How to Use My Answer List</h3>
+	</div>
+	<p>
+	In addition, Showing the My Answer List page will be shown by click <a class='btn btn-default btn-xs'><i class="fa fa-fw fa-clipboard"></i>Questioner<i class="fa fa-fw fa-angle-right"></i>Answer List</a> menu. Record has been filled is marked by red box in the table. The figure shown below.
+	</p>
+	<div class="row">
+		<img class='col-lg-8' src='<?php echo $this->basePath('img/MyAnswerList.png') ?>'>
+	</div>
+	<br>
+	<p>
+	This page show the information gathering through <a class='btn btn-success btn-xs' href='<?php echo $this->url('questioner',array('action'=>'add')); ?>'>Questioner form &raquo;</a>. <a class='btn btn-info btn-xs' href='#'>View Detail</a> button will show the detail information from answer field in the table. You can removed your answer list by click the <a class='btn btn-danger btn-xs'>Delete</a> button. <a class='btn btn-warning btn-xs'>Go Estimate <i class="fa fa-fw fa-arrow-right"></i></a> button is retrieval step from case based reasoning, it will be started by click. This step is based on the preferred choice of a software project similarity measure.
+	</p>
+	<div class="page-header">
+	<h3>Reading The Retrieved Table by Similarity Process</h3>
+	</div>
+	<p>
+		The next, by Click <a class='btn btn-warning btn-xs'>Go Estimate <i class="fa fa-fw fa-arrow-right"></i></a> button the retrieve process will be started and this process will be counting relevant similarity or analogies from information gain through the form. Then the Output of this process shown on Retrieve - Counting Relevant Similarity page and It figured below.
+	</p>
+	<br>
+	<div class="row">
+		<img class='col-lg-8' src='<?php echo $this->basePath('img/Retrieve-CountingRelevantSimilarity.png') ?>'>
+		<img class='col-lg-8' src='<?php echo $this->basePath('img/Retrieve-SimilarityPercentage.png') ?>'>
+	</div>
+	<br>
+	<p>
+		At the similarity percentage table it show dataset record from database. The showing of similarity percentage as well as in% field is producted from calculating relevan similarity based on Nearest Neighbor algorithm. By using this Algorithm, SEE CBR calculated how many similar project should be used.
+	</p>
+	<p>
+		For Detail all field named, you can <a href='http://promisedata.googlecode.com/svn/trunk/effort/cosmic/cosmic.arff'>Download Cosmic Dataset info</a>
+	</p>
+	<p>
+	Similarity percentage shown in% field at table below. Click <a class='btn btn-info btn-xs' href='#'><i class='fa fa-fw fa-caret-right'></i>id number</a> button if you will dapt the chosen analogies in order to generate an estimate for the new project. The tabel sorted by maximum similarity percentage to minimum except zero percent of similarity. Click <a class='btn btn-success btn-xs' href='#'>Press to Function Point Analysis</a> button if you will revise the solution.
+	</p>
+	<div class="page-header">
+	<h3>Fill Unadjusted Function Point Form</h3>
+	</div>
+	<p>
+	Fixed number given it would be counted by multiplication with weight component. Function points estimates are more accurate when performed by an experience developer. Fill fixed number input grading. Each parameter description is assigned a complexity value which is either high, low or medium. You must be careful when you analyze the specification or requirement. if you miss any of the important parameter then that will result in an error in the estimate.
+	</p>
+	<div class="row">
+		<img class='col-lg-8' src='<?php echo $this->basePath('img/Revise-UnadjustedFunctionPointForm.png') ?>'>
+	</div>
+	<p>
+	Click <a class='btn btn-success btn-xs'>Calculate</a> button if you want to calculate unadjusted function point. it will redirected on System Complexity page automaticly.
+	</p>
+	
+	<div class="page-header">
+	<h3>Choising System Complexity Scale</h3>
+	</div>
+	
+	<P>
+	Processing complexity used to be counting weight of complexity from software build based on 14 categories. you must be careful when choising scale of complexity. therefore choising the weight scale of complexity are more accurate when performed by an experince developer.
+	</P>
+	<div class="row">
+		<img class='col-lg-7' src='<?php echo $this->basePath('img/Revise-SystemComplexity.png') ?>'>
+	</div>
+	<br>
+	<p>
+	Then Click <a class='btn btn-success btn-xs'>Process</a> button after all scale filled. 
+	</p>
+	
+	<div class="page-header">
+	<h3>Revise - Effort Estimation Report</h3>
+	</div>
+	<p>
+	Redirect process will run after <a class='btn btn-success btn-xs'>Process</a> button have been pressed and scale processing complexity have been counted. The Figure shown below.
+	</p>
+	<div class="row">
+		<img class='col-lg-7' src='<?php echo $this->basePath('img/Revise-output.png') ?>'>
+	</div>
+	<p>Click <a class='btn btn-success btn-xs' href='#'>Save into dataset</a> button to retain new case and save new solution into dataset. when solution in the past case has not given best percentage by similarities or analogies, you can reuse the solution.
+	</p>
+	<p>
+	When saving into dataset have been successed redirect process will run. 
+	</p>
+	<div class="row">
+		<img class='col-lg-7' src='<?php echo $this->basePath('img/Retain-ProjectEffortEstimation.png') ?>'>
+	</div>
+	<br>
+	<p>
+	Function point analysis is a very solid method for measuring the functional size of a complete data-driven information system.
+	</p>
+</div>

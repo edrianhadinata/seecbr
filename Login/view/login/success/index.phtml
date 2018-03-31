@@ -1,0 +1,15 @@
+<?php
+	//filename : index.phtml
+
+	//echo $this->layout()->myUser['username'];
+	
+	?>
+
+
+<div class="jumbotron">
+    <h1><?php echo sprintf($this->translate('Welcome to %s<b><i>SEE CBR</i></b>%s'), '<span class="zf-green">', '</span>') ?></h1>
+    <p><?php echo sprintf($this->translate('Congratulations! You have successfully Logged to CBR-Based Software Effort Estimation%s. You are currently running SEE CBR version %s. This software serve as a simple starting point to estimate effort to build your software project development.'), '<a href="https://github.com/zendframework/ZendSkeletonApplication" target="_blank">', '</a>', \Zend\Version\Version::VERSION) ?></p>
+	<p><a class="btn btn-success btn-lg" href="<?php echo $this->url('questioner',array('action'=>'add')); ?>"><?php echo $this->translate('Start This Software') ?> &raquo;</a> &nbsp; &nbsp;<a class="btn btn-info btn-lg" href="<?php echo $this->url('success',array('action'=>'help'));?>" target="_blank"><?php echo $this->translate('How to Use This') ?> &raquo;</a></p>
+  
+</div>
+

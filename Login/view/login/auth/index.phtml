@@ -1,0 +1,54 @@
+<?php
+//file name : index.phtml
+
+$title = "Login";
+$this->headTitle($title);
+
+?>
+
+<div class="row">
+	<div class="col-lg-4">
+         <div class="panel panel-default">
+             <div class="panel-heading">
+                 <h3 class="panel-title"><i class="fa fa-lock"></i> <?php echo $this->escapeHtml($title); ?></h3>
+             </div>
+			<div class="panel-body">
+             <?php
+			$form=$this->form;
+			$form->setAttribute('action',$this->url('auth'));
+
+			$form->prepare();
+
+			echo $this->form()->openTag($form);
+			echo $this->formRow($form->get('username'));
+			echo "<br>";
+			echo $this->formRow($form->get('password'));
+			echo "<br>";
+			echo "<br>".$this->formSubmit($form->get('Loginsubmit'))."</br>";
+			echo $this->form()->closeTag();
+
+			echo $this->error;
+
+			?>
+			</div>
+         </div>
+	</div>
+	<div class="col-lg-8">
+		<div class="panel panel-default">
+             <div class="panel-heading">
+                 <h3 class="panel-title"><i class="fa fa-bullhorn"></i> Intro</h3>
+             </div>
+			<div class="panel-body">
+				<p>Today the software development has became a nessesary investment for every organisation. Therefore  <span class="zf-green"><b><i>SEE CBR</i></b></span> (<i>Software Effort Estimation Case Based Reasoning</i>) offer the contribution towards improvement of software engineering level.
+				</p>
+				<p>
+				SEE CBR using <a href='http://www.cosmicon.com'>Cosmic</a>(<i>The Common Software Measurement International Consortium</i>) dataset with field contains ISBSG Rating Code of A and B. You can download dataset if you want to know a completely field. <a href='http://promisedata.googlecode.com/svn/trunk/effort/cosmic/cosmic.arff'>Download</a>
+				</p>
+				<p>
+					To login this site you must be a member. Thus, you can login through user and password which is specially given. Do you want to be a member? mail to <a href='mailto:edrianhadinata@gmail.com'>edrianhadinata@gmail.com</a> and join us. <font color='red'><b><i class='fa fa-angellist'></i> it's free </b></font> 
+				</p>
+			</div>
+		</div>
+	</div>
+	
+</div>

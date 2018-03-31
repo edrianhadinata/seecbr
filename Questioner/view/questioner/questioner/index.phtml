@@ -1,0 +1,41 @@
+<?php
+	
+	$title='My Answer List';
+	$this->headTitle($title);
+	
+?>
+
+<div class="page-header">
+    <h1><?php echo $this->escapeHTML($title); ?> </h1>
+</div>
+<div class="well">
+ <p>
+	This page show the information gathering through <a class='btn btn-success btn-xs' href='<?php echo $this->url('questioner',array('action'=>'add')); ?>'>Questioner form &raquo;</a>. <a class='btn btn-info btn-xs' href='#'>View Detail</a> button will show the detail information from answer field in the table. You can removed your answer list by click the <a class='btn btn-danger btn-xs'>Delete</a> button. <a class='btn btn-warning btn-xs'>Go Estimate <i class="fa fa-fw fa-arrow-right"></i></a> button is retrieval step from case based reasoning, it will be started by click. This step is based on the preferred choice of a software project similarity measure.
+</p>
+</div>
+
+<p>
+	<a class="btn btn-success btn-md" href='<?php echo $this->url('questioner',array('action'=>'add')); ?>'>Questioner form &raquo;</a>
+</p>
+
+<table class="table">
+	<tr>
+		<th>ID</th>
+		<th width='50%'>Answer</th>
+		<th>Process</th>
+		<th>Effort</th>
+	</tr>
+	
+	<?php foreach($questioner as $answer): ?>
+	<?php if($answer->ans_data['username']==$this->layout()->myUser['username']){ ?>
+	<tr>
+		<td><?php echo $this->escapeHtml($answer->ans_data['ID_Answer']); ?></td>
+		<td><?php echo $this->escapeHtml($answer->ans_data['answer_data']); ?></td>
+		<td><a class="btn btn-info btn-md" href='<?php echo $this->url('questioner',array('action'=>'myAnswerData','id'=>$answer->ans_data['ID_Answer'])); ?>'>View Detail</a>&nbsp;<a href="<?php echo $this->url('questioner',array('action'=>'delete','id'=>$answer->ans_data['ID_Answer'])); ?>" class="btn btn-danger btn-md">Delete</a></td>
+		<td><a class="btn btn-warning btn-md" href='<?php echo $this->url('estimate',array('action'=>'estimateProcess','id'=>$answer->ans_data['ID_Answer'])); ?>'>Go Estimate <i class="fa fa-fw fa-arrow-right"></i></a></td>
+	</tr>
+	<?php } ?>
+	<?php endforeach; ?>
+</table>
+
+
